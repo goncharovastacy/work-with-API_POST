@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+h2 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.inputs {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.posts {
+    margin-top: 20px;
+}
+
+.posts .post:not(:first-child) {
+    margin-top: 10px;
+}
