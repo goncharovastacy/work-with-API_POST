@@ -5,6 +5,15 @@ const body = document.querySelector('#body');
 const button = document.querySelector('#button');
 const posts = document.querySelector('.posts');
 
+// создаем разметку поста
+function createPost(obj){
+  const post = document.createElement('div');
+  post.className = 'post';
+  post.innerHTML = `<h3>${obj.title}</h3>
+  <p>${obj.body}</p>`;
+  posts.append(post);
+}
+
 function sendPost (title, body){
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
@@ -18,14 +27,11 @@ function sendPost (title, body){
       })
       .then(response => response.json())
       .then(json => {
-        const post = document.createElement('div');
-        post.className = 'post';
-        post.innerHTML = `<h3>${json.title}</h3>
-        <p>${json.body}</p>`;
-        posts.append(post);
+        createPost(json);
       } )
 }
 
+// очищаем инпуты после нажатия
 function clearInputs(){
     title.value = '';
     body.value = '';
@@ -34,4 +40,4 @@ function clearInputs(){
 button.addEventListener('click', () => {
     sendPost(title.value, body.value);
     clearInputs();
-});
+})
